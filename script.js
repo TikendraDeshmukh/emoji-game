@@ -141,3 +141,7 @@ function showSlide5() {
 
 // Initialize Slides
 showSlide1();
+showSlide2();
+showSlide3();
+showSlide4();
+showSlide5();
