@@ -144,4 +144,3 @@ showSlide1();
 showSlide2();
 showSlide3();
 showSlide4();
-showSlide5();
