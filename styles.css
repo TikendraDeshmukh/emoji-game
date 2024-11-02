@@ -1,26 +1,24 @@
-body {
+body{
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f5f5f5;
 }
-
-.slide {
+.slide{
     display: none;
     margin: 20px;
 }
-
-.slide.active {
+.slide.active{
     display: block;
 }
 
-.emoji-container, .color-container, .number-container, .color-group-container {
+.emoji-container, .color-container, .number-container,  .color-group-container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 20px;
 }
 
-.next-button {
+.next-button{
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
@@ -29,55 +27,33 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s;
 }
-
-.next-button:hover {
+.next-button:hover{
     background-color: #45a049;
-    transform: scale(1.05);
 }
 
-.color-box, .number-box {
+.color-box, .number-box{
     width: 50px;
     height: 50px;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
 }
-
-.number-box {
+.number-box{
     font-size: 18px;
     line-height: 50px;
     text-align: center;
     background-color: #ddd;
     transition: background-color 0.3s;
 }
-
-.number-box:hover {
+.number-box:hover{
     background-color: #ccc;
 }
-
-.color-box:hover {
+.color-box:hover{
     opacity: 0.8;
 }
-
-.selected {
+.selected{
     background-color: #4CAF50;
     color: white;
-}
-
-.color-group-container {
-    margin-top: 20px;
-}
-
-/* Additional Styles for Emojis */
-.emoji-container {
-    font-size: 30px; /* Increase emoji size */
-    margin: 10px 0;
-}
-
-/* Style for question text */
-.question {
-    font-size: 20px;
-    margin: 15px 0;
 }
