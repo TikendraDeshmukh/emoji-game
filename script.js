@@ -1,4 +1,3 @@
-
 // function for shuffle emoji
 function shuffleArray(array){
     for (let i= array.length -1;i>0;i--){
@@ -21,6 +20,7 @@ const emojis = [
   "💰", "💎", "👑", "📚", "🕉️", "🎶", "🚩", "✏️", "🪶", "❄️",
   "😎", "🤡", "🧊", "🔥", "🌼", "🎁", "☠️", "🐍", "🤫", "🤯"
 ];
+
 function showSlide1(){
     shuffleArray(emojis);
     const emojiContainer=document.getElementById('emojiContainer');
@@ -96,42 +96,194 @@ function handleColorGroupResponse(isYes){
         extra_color=colorGroup1;
     }
     showSlide(5);
+} 
+
+// initilize slide5..........*************************************************************************************
+const slideItems={
+    question1: [],
+    question2: [],
+    question3: [],
+    question4: [],
+    question5: [],
+};
+function distributeEmojis(){
+    for (let [number, emoji] of Object.entries(emoji_assigned_name)){
+        const emojiNumber = parseInt(number);
+        if (emojiNumber === 0b00001) slideItems.question5.push(emoji);
+        else if (emojiNumber === 0b00010) slideItems.question4.push(emoji);
+        else if (emojiNumber === 0b00011){
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b00100) slideItems.question3.push(emoji);
+        else if (emojiNumber === 0b00101){
+            slideItems.question3.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b00110){
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b00111){
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b01000) slideItems.question2.push(emoji);
+        else if (emojiNumber === 0b01001){
+            slideItems.question2.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b01010){
+            slideItems.question2.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b01011){
+            slideItems.question2.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b01100){
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+        }
+        else if (emojiNumber === 0b01101){
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b01110){
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b01111){
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b10000) slideItems.question1.push(emoji);
+        else if (emojiNumber === 0b10001){
+            slideItems.question1.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b10010){
+            slideItems.question1.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b10011){
+            slideItems.question1.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b10100){
+            slideItems.question1.push(emoji);
+            slideItems.question3.push(emoji);
+        }
+        else if (emojiNumber === 0b10101){
+            slideItems.question1.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b10110){
+            slideItems.question1.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b10111){
+            slideItems.question1.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b11000){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+        }
+        else if (emojiNumber === 0b11001){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b11010){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b11011){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b11100) {
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+        }
+        else if (emojiNumber === 0b11101){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+        else if (emojiNumber === 0b11110){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+        }
+        else if (emojiNumber === 0b11111){
+            slideItems.question1.push(emoji);
+            slideItems.question2.push(emoji);
+            slideItems.question3.push(emoji);
+            slideItems.question4.push(emoji);
+            slideItems.question5.push(emoji);
+        }
+    }
+    return slideItems;
+    
 }
 
-// Initialize slide5..........*****************************
-function showSlide5() {
-    const questionContainer = document.getElementById('questionContainer');
-    questionContainer.innerHTML = ' ';
-
-    document.getElementById('nextButton5').addEventListener('click', () => showSlide(6));
+function showSlide5(){
+    distributeEmojis();
+    const questionContainer = document.getElementById('questionContainer'); 
+    questionContainer.innerHTML = `
+    <p>Is your emoji present in Question 1 list? ${slideItems.question1.join(" ")}</p>
+    <p>Is your emoji present in Question 2 list? ${slideItems.question2.join(" ")}</p>
+    <p>Is your emoji present in Question 3 list? ${slideItems.question3.join(" ")}</p>
+    <p>Is your emoji present in Question 4 list? ${slideItems.question4.join(" ")}</p>
+    <p>Is your emoji present in Question 5 list? ${slideItems.question5.join(" ")}</p>
+    `;
+    document.getElementById('nextButton5').addEventListener('click',()=>showSlide(6));
 }
+
 const items = [
   "⭐", "🏆", "🎈", "🫧", "💖", "🍎", "🥭", "🪔", "🧨", "⚽",
   "💰", "💎", "👑", "📚", "🕉️", "🎶", "🚩", "✏️", "🪶", "❄️",
   "😎", "🤡", "🧊", "🔥", "🌼", "🎁", "☠️", "🐍", "🤫", "🤯"
-];
-const emoji_number = [
-  "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-  "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-  "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
-];
-// Function to shuffle the array
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-// Shuffle the items array
+]
+const emoji_number =["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"];
 shuffleArray(items);
-
-// Assign emojis to numbers
-for (let i = 0; i < emoji_number.length; i++) {
-    emoji_assigned_name[emoji_number[i]] = items[i];
+//Asign emoji to numbers
+const emoji_assigned_name ={};
+for (let i = 0; i < emoji_number.length; i++){
+    emoji_assigned_name[emoji_number[i]]=items[i];
 }
-// Log the resulting pairs
+// log the resulting pairs
 console.log(emoji_assigned_name);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,3 +304,4 @@ showSlide2();
 showSlide3();
 showSlide4();
 showSlide5();
+showSlide6();

@@ -2,6 +2,7 @@ body{
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f5f5f5;
+    padding: 10px;
 }
 .slide{
     display: none;
@@ -28,9 +29,11 @@ body{
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .next-button:hover{
     background-color: #45a049;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .color-box, .number-box{
@@ -39,6 +42,7 @@ body{
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .number-box{
     font-size: 18px;
@@ -56,4 +60,13 @@ body{
 .selected{
     background-color: #4CAF50;
     color: white;
+}
+.emoji-container span{
+    font-size: 24px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.emoji-container span:hover{
+    transform: scale(1.1);
 }
