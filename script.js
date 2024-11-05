@@ -21,14 +21,20 @@ const emojis = [
   "😎", "🤡", "🧊", "🔥", "🌼", "🎁", "☠️", "🐍", "🤫", "🤯"
 ];
 
-function showSlide1(){
+function showSlide1() {
     shuffleArray(emojis);
-    const emojiContainer=document.getElementById('emojiContainer');
-    emojiContainer.innerHTML = emojis.join(' ');
-    //button1
+    const emojiContainer = document.getElementById('emojiContainer');
+    emojiContainer.innerHTML = ''; // Clear previous emojis
+    emojis.forEach(emoji => {
+        const emojiBox = document.createElement('div'); // Create a new div for each emoji
+        emojiBox.className = 'emoji-box'; // Assign the class for styling
+        emojiBox.textContent = emoji; // Set the emoji as the content
+        emojiContainer.appendChild(emojiBox); // Append the box to the container
+    });
+
+    // Button to move to the next slide
     document.getElementById('nextButton1').addEventListener('click', () => showSlide(2));
 }
-
 // initialize slide2..........************************************************************************************
 // array of colors
 const colors = ["Red","Green","Blue","Yellow","Purple","Black","Orange","Pink","Brown","Gray"];
@@ -246,17 +252,53 @@ function distributeEmojis(){
     
 }
 
-function showSlide5(){
+function showSlide5() {
     distributeEmojis();
-    const questionContainer = document.getElementById('questionContainer'); 
-    questionContainer.innerHTML = `
-    <p>Is your emoji present in Question 1 list? ${slideItems.question1.join(" ")}</p>
-    <p>Is your emoji present in Question 2 list? ${slideItems.question2.join(" ")}</p>
-    <p>Is your emoji present in Question 3 list? ${slideItems.question3.join(" ")}</p>
-    <p>Is your emoji present in Question 4 list? ${slideItems.question4.join(" ")}</p>
-    <p>Is your emoji present in Question 5 list? ${slideItems.question5.join(" ")}</p>
-    `;
-    document.getElementById('nextButton5').addEventListener('click',()=>showSlide(6));
+    const questionContainer = document.getElementById('questionContainer');
+    const questions = [
+        { text: `Is your emoji present in Question 1 list?`, answers: slideItems.question1 },
+        { text: `Is your emoji present in Question 2 list?`, answers: slideItems.question2 },
+        { text: `Is your emoji present in Question 3 list?`, answers: slideItems.question3 },
+        { text: `Is your emoji present in Question 4 list?`, answers: slideItems.question4 },
+        { text: `Is your emoji present in Question 5 list?`, answers: slideItems.question5 },
+    ];
+
+    let currentQuestionIndex = 0;
+
+    function showNextQuestion() {
+        if (currentQuestionIndex >= questions.length) {
+            showSlide(6); // Move to the next slide when done
+            return;
+        }
+
+        const currentQuestion = questions[currentQuestionIndex];
+        
+        // Create HTML for the current question
+        const emojiBoxes = currentQuestion.answers.map(emoji => 
+            `<div class="emoji-box">${emoji}</div>`
+        ).join('');
+
+        questionContainer.innerHTML = `
+            <p>${currentQuestion.text} ${emojiBoxes}</p>
+            <br>
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+        `;
+
+        document.getElementById('yesButton').onclick = () => handleAnswer(true);
+        document.getElementById('noButton').onclick = () => handleAnswer(false);
+    }
+
+    function handleAnswer(isYes) {
+        // Log the answer for debugging
+        console.log(`Question ${currentQuestionIndex + 1}: ${isYes ? 'Yes' : 'No'}`);
+        
+        // Move to the next question
+        currentQuestionIndex++;
+        showNextQuestion();
+    }
+
+    showNextQuestion(); // Start with the first question
 }
 
 const items = [

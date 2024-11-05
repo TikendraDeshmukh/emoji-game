@@ -70,3 +70,18 @@ body{
 .emoji-container span:hover{
     transform: scale(1.1);
 }
+
+.emoji-box {
+    display: inline-block; /* Allow boxes to sit side by side */
+    width: 50px; /* Fixed width for the box */
+    height: 50px; /* Fixed height for the box */
+    margin: 5px; /* Space between boxes */
+    border: 1px solid #ccc; /* Border for the box */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    text-align: center; /* Center text in the box */
+    line-height: 50px; /* Center emoji vertically */
+    font-size: 24px; /* Size of emoji */
+}
+
